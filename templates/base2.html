@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/d206b6bfc8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dashboard2.css' %}">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <!-- <title>Prime Trade</title> -->
+</head>
+<body>
+  <!-- header -->
+  <div class="modern-layout">
+    <header>
+      <nav class="nav">
+        <div class="nav-image" id="dash-logo-name"><a href="{% url 'index' %}">CRYPTO XTREME</a> </div>
+  
+  
+        <div class="nav-links" id="nav-links">
+          <ul>
+            <li class="closebtn" style="padding-left: 10px"><a href="javascript:void(0)" onclick="closeNav()"><i class="fas fa-times"></i></a></li>
+            <!-- <li class="nav-link"><a href="{% url 'index' %}">Home</a></li> -->
+  
+            <li class="nav-link link-group">
+              <i class="bi bi-border-all"></i>
+              <a class="link-element" href="{% url 'dashboard' %}">My Dashboard</a>
+            </li>
+  
+            <li class="nav-link link-group">
+              <i class="bi bi-box-arrow-in-up"></i>
+              <a class="link-element" href="{% url 'deposit' %}">Deposit</a>
+            </li>
+  
+            <li class="nav-link link-group">
+              <i class="bi bi-box-arrow-in-down"></i>
+              <a class="link-element" href="{% url 'withdraw' %}">Withdraw</a>
+            </li>
+            
+            <!-- <li class="nav-link btn btn-primary" id="login"><a href="{% url 'index' %}">Sign out</a></li> -->
+            {% if user.is_authenticated %}
+              <li class="link-group">
+                  <i style="color: white" class="bi bi-person"></i>
+                  <a class="nav-link"  class="link-element" id="login" href="javascript:{document.getElementById('logout').submit()}">Sign Out</a>
+                  <form action="{% url 'logout' %}" id="logout" method="POST">
+                      {% csrf_token%}
+                      <input type="hidden">
+                  </form>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+  
+    <main class="main-section">
+      {% block content %} {% endblock %}
+    </main>
+  </div>
+  
+
+  <!-- footer -->
+  <!-- <div class="whatsapp">
+    <i class="bi bi-whatsapp"></i>
+  </div> -->
+
+  <footer class="footer3">
+    <p class="center copyright">Copyright &copy CRYPTO XTREME TRADE FX 2022</p>
+  </footer>
+
+  <script src="{% static 'js/app.js' %}"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+</html>

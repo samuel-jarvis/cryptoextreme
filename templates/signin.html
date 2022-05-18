@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+  <link rel="stylesheet" href="{% static 'css/sign.css' %}">
+  <title>Sign In | CRYPTO XTREME TRADE FX</title>
+</head>
+
+  <div class="fancy-bg padding-x padding-y" style="background-image: url('static/images/3.jpg' );">
+    <!-- Contact Us -->
+    <div class="form signup" style="margin: 40px auto;">
+      <form id="log-in" method="POST" action="{% url 'signin' %}">
+
+        {% csrf_token %}
+
+        <!-- <h2 class="form-header">Login to your Account</h2> -->
+        {% include '_alert.html' %}
+
+        <label for="email">Email:</label><br>
+        <input type="email" name="email" placeholder="example@gmail.com" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" id="password" required>
+        <i class="bi bi-eye" id="togglePassword"></i>
+
+        <input id="form-btn" type="submit" value="Sign In">
+        <p style="color: white; font-size: 1.4rem; margin-top: 10px; ">don't have an account? <a href="{% url 'signup' %}">register now</a></p>
+      </form>
+    </div>
+    
+  </div>
+
+  <div class="benefits padding-x padding-y">
+    <p>24/7 Customer support</p>
+    <p>CRYPTO XTREMEtrade@gmail.com</p>
+    <p>Friendly Support Ticket</p>
+    <p>+(277) 3546-4801</p>
+  </div>
+    
+  {% endblock %}

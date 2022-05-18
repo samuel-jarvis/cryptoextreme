@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+  <link rel="stylesheet" href="{% static 'css/sign.css' %}">
+  <title>Create Your Account | FX Pro</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+</head>
+
+<div class="fancy-bg" style="background-image: url('static/images/3.jpg' );">
+  <div class="form signup" action = "{% url 'signup' %}">
+    <form id="sign-up" action="" method="POST" >
+      {% csrf_token%}
+      <!-- <h2 class="form-header">Create an Account</h2> -->
+      {% include '_alert.html' %}
+
+      <label for="fname">First Name:</label><br>
+      <input type="text" name="first_name" required><br><br>
+
+      <label for="lname">Last Name:</label><br>
+      <input type="text" name="last_name" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" name="email" required><br><br>
+
+      <label for="password1">Password:</label><br>
+      <input type="password" name="password" id="password" required>
+      <i class="bi bi-eye" id="togglePassword"></i>
+      <br>
+
+      <label for="password2">Repeat Password:</label><br>
+      <input type="password" name="password2" id="password2"  required>
+      <i class="bi bi-eye" id="togglePassword2"></i>
+      <br>
+
+      <div class="inputs-w3ls">
+        <select name='sex'><option value='Male'>Male</option><option value='Female'>Female</option>--SELECT---</option>";
+       echo"</select>
+       
+         </div>
+         </br>
+                 <div class="inputs-w3ls">
+       <select name='package'>
+           <option value='Binary Option'>Binary Option</option>
+           <option value='Bitcoin Investment'>Bitcoin Mining</option>
+       <option value='Forex Trading'>Forex Trading</option>--SELECT---</option>";
+       echo"</select>
+       
+      </div>
+
+      <input id="form-btn" type="submit" value="Sign Up">
+      <p style="font-size: 1.4rem; margin-top: 10px; color: white; ">Already have an account? <a href="{% url 'signin' %}">Sign in</a></p>
+    </form>
+  </div>
+</div>
+
+<div class="register-details">
+  <div class="register-detail">
+    <p class="register_heading">After Registering you will receive:</p>
+    <ul class="register_detail_list">
+      <li>Access to the best platform for trading CFDs, Forex and Options</li>
+      <li>Personal Manager</li>
+      <li>Weekly webinars from professional brokers</li>
+      <li>Access to educational videos</li>
+    </ul>
+  </div>
+
+  <div class="register-detail">
+    <p class="register_heading">We Provide:</p>
+    <ul class="register_detail_list">
+      <li>The most advanced trading platform for trading CFD,s Forex and Options</li>
+
+      <li>A wide range of trading tools</li>
+      
+      <li>5 account types to suit every type of trader</li>
+      
+      <li>Daily markets analysis</li>
+      
+      <li>Over 90 assets</li>
+    </ul>
+  </div>
+</div>
+
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+<!-- cta -->
+{% endblock %}
